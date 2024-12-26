@@ -9,10 +9,16 @@
 <body onload="onInit()">
     <h1>My Book Shop</h1>
     <table class="book-table">
-        
-        <!-- <tr class="book-list"></tr> -->
+        <thead>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+        </tbody>
     </table>
 
+    <button onclick="onAddBook()">+ Add Book</button>
     <script src="js/book-service.js"></script>
     <script src="js/book-controller.js"></script>
 </body>

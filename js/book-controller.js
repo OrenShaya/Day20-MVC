@@ -6,12 +6,8 @@ function onInit() {
 
 function render() {
     const books = getBooks()
-    const elBookList = document.querySelector('.book-table')
-    var strHtmls = '<tr>\n' +
-            '<th>Title</th>\n' +
-            '<th>Price</th>\n' +
-            '<th>Actions</th>\n' +
-            '</tr>'
+    const elBookList = document.querySelector('.book-table tbody')
+    var strHtmls = ''
     books.forEach(book => {
         strHtmls += 
         `<tr>
@@ -29,8 +25,6 @@ function render() {
 
 function onReadBook(bookId) {
     console.log('Reading book', bookId)
-
-    render()
 }
 
 function onUpdateBook(bookId) {
@@ -42,5 +36,13 @@ function onUpdateBook(bookId) {
 function onDeleteBook(bookId) {
     console.log('Deleting book', bookId)
     deleteBook(bookId)
+    render()
+}
+
+function onAddBook() {    
+    var title = prompt('Enter the new book title:')    
+    var price = prompt('Enter the new book price:')
+
+    addBook(title, price)
     render()
 }
