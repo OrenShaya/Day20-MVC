@@ -1,41 +1,43 @@
 'use strict'
 
-const gBooks = [
-    {   id: 'bn4J78',
-        title: 'The adventures of Lori Ipsi',
-        price: 120,
-        imgUrl: 'img/lorem-ipsum.jpg'
-    },
-    {   id: 'bnK5K3',
-        title: 'Kratos: The Atlas killer',
-        price: 150,
-        imgUrl: 'img/kratos.webp'
-    },
-    {   id: 'bn7Z83',
-        title: 'Zora: The Lost Hyrule Domain',
-        price: 90,
-        imgUrl: 'img/zora.jpg'
-    },
-]
+const STORAGE_KEY = 'books'
+const gBooks = []
 
 function getBooks() {
-    return gBooks
+    var books = loadFromStorage(STORAGE_KEY)
+    if (!books || !books.length) {
+        books = [
+            addBook('The adventures of Lori Ipsi', 120, 'img/lorem-ipsum.jpg'),
+            addBook('Kratos: The Atlas killer', 150, 'img/kratos.webp'),
+            addBook('Zora: The Lost Hyrule Domain', 90, 'img/img/Zora.webp'),
+        ]
+        saveToStorage(STORAGE_KEY, books)
+    }
+    return books
 }
 
-function addBook(title, price) {
+function getBook(bookId) {
+    const books = loadFromStorage('books')
+    return books.filter(book => book.id === bookId)[0]
+}
+
+function addBook(title, price, imgUrl='img/default.webp') {
     var newBook = {   
         id: generateNewBookId(),
         title: title,
         price: price,
-        imgUrl: ''
+        imgUrl: imgUrl
     }
-    gBooks.push(newBook)
-    console.log(gBooks)    
+    gBooks.unshift(newBook)
+    saveToStorage(STORAGE_KEY, gBooks)
+    return newBook
 }
 
 function deleteBook(bookId) {
     const bookIdx = gBooks.findIndex(book => book.id === bookId)
     gBooks.splice(bookIdx, 1)
+
+    saveToStorage(STORAGE_KEY, gBooks)
 }
 
 function updateBook(bookId, newPrice) {
