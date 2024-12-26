@@ -35,7 +35,7 @@ function onReadBook(bookId) {
 
 function onUpdateBook(bookId) {
     console.log('Updating book', bookId)
-    updateBook(bookId)
+    updateBook(bookId, prompt('Enter new price:'))
     render()
 }
 
