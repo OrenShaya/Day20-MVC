@@ -3,7 +3,7 @@
 function onInit() {
     render()
 }
-
+  
 function render() {    
     const books = getBooks()
 
