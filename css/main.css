@@ -1,0 +1,14 @@
+body {
+    background-color: rgb(57, 117, 57);
+    color: rgb(22, 22, 204);
+}
+button {
+    cursor: pointer;
+    background-color: rgb(28, 0, 130);
+    color: rgb(255, 110, 255);
+}
+.book-modal {
+    display: none;
+    position: relative;
+    z-index: -1;
+}

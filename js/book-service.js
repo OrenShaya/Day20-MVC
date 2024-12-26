@@ -22,6 +22,10 @@ function getBooks() {
     return gBooks
 }
 
+function getBook(bookId) {
+    return gBooks.filter(book => book.id === bookId)[0]
+}
+
 function addBook(title, price) {
     var newBook = {   
         id: generateNewBookId(),
