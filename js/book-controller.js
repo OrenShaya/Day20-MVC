@@ -36,15 +36,18 @@ function onInit() {
  */
 
 function render() {
+    const books = getBooks()
     const elBookTable = document.querySelector('.book-table')
-    elBookTable.innerHTML += 
-    `<tr>
-        <td>${TheAdventuresOfLoriIpsi}</td>
-        <td>${120}</td>
-        <td>
-            <button onclick="onRead(this)"> Read   </button> 
-            <button onclick="onUpdate(this)"> Update </button> 
-            <button onclick="onDelete(this)"> Delete </button> 
-        </td>
-    </tr>`
+    books.forEach(book => {
+        elBookTable.innerHTML += 
+        `<tr>
+            <td>${book.title}</td>
+            <td>${book.price}</td>
+            <td>
+                <button onclick="onRead(this)"> Read   </button> 
+                <button onclick="onUpdate(this)"> Update </button> 
+                <button onclick="onDelete(this)"> Delete </button> 
+            </td>
+        </tr>`
+    })
 }
