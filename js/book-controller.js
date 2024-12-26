@@ -31,7 +31,6 @@ function onReadBook(bookId) {
 
     const elBookModal = document.querySelector('.book-modal')
     elBookModal.style.display = 'block'
-    elBookModal.style.zIndex = 1
 
     const book = getBook(bookId)
     console.log('Book:', book)
@@ -40,9 +39,16 @@ function onReadBook(bookId) {
         Book's title: ${book.title}
         Book's price: ${book.price}
         Book's cover: `
+    
+    elBookModal.innerHTML += `<img src="${book.imgUrl}" 
+    alt="Book cover" width="200" height="300">`
+    elBookModal.innerHTML += `<button onclick="onCloseModal()">Hide info</button>`
 }
 
-
+function onCloseModal() {
+    const elBookModal = document.querySelector('.book-modal')
+    elBookModal.style.display = 'none'
+}
 
 function onUpdateBook(bookId) {
     console.log('Updating book', bookId)

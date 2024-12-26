@@ -14,7 +14,7 @@ const gBooks = [
     {   id: 'bn7Z83',
         title: 'Zora: The Lost Hyrule Domain',
         price: 90,
-        imgUrl: 'img/zora.jpg'
+        imgUrl: 'img/Zora.webp'
     },
 ]
 
