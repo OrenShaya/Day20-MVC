@@ -76,8 +76,14 @@ function hideModals() {
 }
 
 function onAddBook() {    
-    var title = prompt('Enter the new book title:')    
+    var title = prompt('Enter the new book title:')
+    while (!title) {
+        title = prompt('Book title cannot be blank\nEnter the new book title:')
+    }
     var price = prompt('Enter the new book price:')
+    while (!price || (+price) < 0) {
+        price = prompt('Price cannot be blank or negative\nEnter the new book price:')
+    }
 
     addBook(title, price)
     render()
