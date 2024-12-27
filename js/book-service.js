@@ -1,19 +1,19 @@
 'use strict'
 
 const STORAGE_KEY = 'books'
-const gBooks = []
+var gBooks = []
 
-function getBooks(filteredBooks = []) {
+function getBooks() {
     var books = loadFromStorage(STORAGE_KEY)
     if (!books || !books.length) {
         books = [
             addBook('The adventures of Lori Ipsi', 120, 'img/lorem-ipsum.jpg'),
             addBook('Kratos: The Atlas killer', 150, 'img/kratos.webp'),
-            addBook('Zora: The Lost Hyrule Domain', 90, 'img/img/Zora.webp'),
+            addBook('Zora: The Lost Hyrule Domain', 90, 'img/zora.webp'),
         ]
         saveToStorage(STORAGE_KEY, books)
     }
-    books.forEach(book => gBooks.push(book))
+    gBooks = books
     return books
 }
 
@@ -36,9 +36,10 @@ function addBook(title, price, imgUrl='img/default.webp') {
 
 function deleteBook(bookId) {
     const bookIdx = gBooks.findIndex(book => book.id === bookId)
-    gBooks.splice(bookIdx, 1)
+    const book = gBooks.splice(bookIdx, 1)
 
     saveToStorage(STORAGE_KEY, gBooks)
+    return book[0].title
 }
 
 function updateBook(bookId, newPrice) {

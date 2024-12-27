@@ -41,12 +41,7 @@ function onReadBook(bookId) {
     
     elBookModal.innerHTML += `<img src="${book.imgUrl}" 
     alt="Book cover" width="200" height="300">`
-    elBookModal.innerHTML += `<button onclick="onCloseModal()">Hide info</button>`
-}
-
-function onCloseModal() {
-    const elBookModal = document.querySelector('.book-modal')
-    elBookModal.style.display = 'none'
+    elBookModal.innerHTML += `<button onclick="hideModals()">Hide info</button>`
 }
 
 function onUpdateBook(bookId) {
@@ -57,8 +52,27 @@ function onUpdateBook(bookId) {
 
 function onDeleteBook(bookId) {
     console.log('Deleting book', bookId)
-    deleteBook(bookId)
+    const bookTitle = deleteBook(bookId)
+    deletedBookMsg(bookTitle)
     render()
+}
+
+function deletedBookMsg(title) {
+    const elDeletedTitle = document.querySelector('.book-deleted-title')
+    elDeletedTitle.innerText = title
+
+    const elDeletedModal = document.querySelector('.book-deleted')
+    elDeletedModal.style.display = 'block'
+
+    // setTimeout(hideModals, 2000)
+}
+
+function hideModals() {
+    const elBookModal = document.querySelector('.book-modal')
+    elBookModal.style.display = 'none'
+    
+    const elDeletedModal = document.querySelector('.book-deleted')
+    elDeletedModal.style.display = 'none'
 }
 
 function onAddBook() {    
