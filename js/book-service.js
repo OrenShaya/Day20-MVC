@@ -13,6 +13,7 @@ function getBooks() {
         ]
         saveToStorage(STORAGE_KEY, books)
     }
+    books.forEach(book => gBooks.push(book))
     return books
 }
 
@@ -43,6 +44,8 @@ function deleteBook(bookId) {
 function updateBook(bookId, newPrice) {
     const book = gBooks.find(book => book.id === bookId)
     book.price = newPrice
+    
+    saveToStorage(STORAGE_KEY, gBooks)
 }
 
 function generateNewBookId() {
