@@ -37,11 +37,6 @@ button, input[type="submit"] {
     color: rgb(164, 163, 219);
     border: 1px solid #888888;
 }
-.book-modal {
-    padding: 20vw;
-
-    background-color: rgb(13, 26, 13);
-}
 .book-deleted-content button { 
     position: absolute; 
     top: -10px;
@@ -54,4 +49,15 @@ button, input[type="submit"] {
     font-size: 14px;
     cursor: pointer;
     color: white;
+}
+.book-modal {
+    position: fixed;
+    padding: 20vw;
+
+    background-color: rgb(13, 26, 13);
+}
+.book-modal button {
+    position: absolute;
+    margin-top: 2%;
+    left: 25%;
 }

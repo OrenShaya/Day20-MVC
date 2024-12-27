@@ -41,7 +41,7 @@ function onReadBook(bookId) {
     
     elBookModal.innerHTML += `<img src="${book.imgUrl}" 
     alt="Book cover" width="200" height="300">`
-    elBookModal.innerHTML += `<button onclick="hideModals()">Hide info</button>`
+    elBookModal.innerHTML += `</br><button onclick="hideModals()">Hide info</button>`
 }
 
 function onUpdateBook(bookId) {
