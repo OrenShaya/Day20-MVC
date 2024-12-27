@@ -8,6 +8,13 @@
 </head>
 <body onload="onInit()">
     <h1>My Book Shop</h1>
+    
+    <form onsubmit="onSetFilter(event)">
+        <input class="filter-title" placeholder="Filter book title">
+        <button type="submit"> Search</button>
+        <button type="reset" onclick="onClearFilter(event)">Clear</button>
+    </form>
+    
     <table class="book-table">
         <thead>
             <th>Title</th>

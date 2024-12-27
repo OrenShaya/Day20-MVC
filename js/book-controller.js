@@ -4,8 +4,8 @@ function onInit() {
     render()
 }
   
-function render() {    
-    const books = getBooks()
+function render(filteredBooks = []) {
+    const books = (filteredBooks.length) ? filteredBooks : getBooks()
 
     const elBookList = document.querySelector('.book-table tbody')
     var strHtmls = '<tbody>'
@@ -66,5 +66,18 @@ function onAddBook() {
     var price = prompt('Enter the new book price:')
 
     addBook(title, price)
+    render()
+}
+
+function onSetFilter(event) {
+    event.preventDefault()
+    var title = document.querySelector('.filter-title').value
+    render(filterByTitle(title))
+}
+
+function onClearFilter(event) {    
+    event.preventDefault()
+    const elFilterTitle = document.querySelector('.filter-title')
+    elFilterTitle.value = ''
     render()
 }

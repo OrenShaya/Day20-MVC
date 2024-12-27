@@ -2,7 +2,7 @@ body {
     background-color: rgb(57, 117, 57);
     color: rgb(22, 22, 204);
 }
-button {
+button, input[type="submit"] {
     cursor: pointer;
     background-color: rgb(28, 0, 130);
     color: rgb(255, 110, 255);

@@ -3,7 +3,7 @@
 const STORAGE_KEY = 'books'
 const gBooks = []
 
-function getBooks() {
+function getBooks(filteredBooks = []) {
     var books = loadFromStorage(STORAGE_KEY)
     if (!books || !books.length) {
         books = [
@@ -46,6 +46,11 @@ function updateBook(bookId, newPrice) {
     book.price = newPrice
     
     saveToStorage(STORAGE_KEY, gBooks)
+}
+
+function filterByTitle(title) {
+    return gBooks.filter(book => 
+        book.title.toLowerCase().includes(title.toLowerCase()))
 }
 
 function generateNewBookId() {
