@@ -61,3 +61,29 @@ button, input[type="submit"] {
     margin-top: 2%;
     left: 25%;
 }
+.lower-buttons {
+    display: grid;
+    width: 20%;
+    gap: 10%;
+    grid-template-areas: 
+        "add add"
+        "prev next";
+}
+button[name="add-book"] {
+    justify-self: center;
+    grid-area: add;
+    display: flex;
+    gap: 40%;
+}
+button[name="prev"] {
+    justify-self: left;
+    grid-area: prev;
+    display: flex;
+    
+}
+button[name="next"] {
+    justify-self: right;
+    grid-area: next;
+    display: flex;
+    
+}

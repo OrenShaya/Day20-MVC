@@ -2,6 +2,7 @@
 
 const STORAGE_KEY = 'books'
 var gBooks = []
+var gPage = {indexPage: 0, booksPerPage: 2}
 
 function getBooks() {
     var books = loadFromStorage(STORAGE_KEY)
@@ -13,6 +14,18 @@ function getBooks() {
         ]
         saveToStorage(STORAGE_KEY, books)
     }
+
+    let totalPages = Math.ceil(books.length / gPage.booksPerPage)
+    console.log(gPage);
+    
+    if (gPage.indexPage >= totalPages) gPage.indexPage = 0
+    if (gPage.indexPage < 0) gPage.indexPage = totalPages - 1
+
+    let startingBook = gPage.indexPage * gPage.booksPerPage
+    
+    console.log(gPage);
+    
+    books = books.slice(startingBook, startingBook + gPage.booksPerPage )
     gBooks = books
     return books
 }
@@ -20,6 +33,10 @@ function getBooks() {
 function getBook(bookId) {
     const books = loadFromStorage('books')
     return books.filter(book => book.id === bookId)[0]
+}
+
+function getPage() {
+    return gPage
 }
 
 function addBook(title, price, rating = 3, imgUrl='img/default.webp') {

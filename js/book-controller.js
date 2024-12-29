@@ -146,3 +146,10 @@ function onSortBy(sortBy) {
 
     render(books)    
 }
+
+function onChangePage(diff) {
+    var page = getPage()
+    page.indexPage += +diff
+
+    render()    
+}
