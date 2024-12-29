@@ -55,13 +55,25 @@ function filter(filter) {
     
     if (!filter.rating && !filter.title) return []
 
+    const queryParams = new URLSearchParams()
+    
     if (filter.title) {
+        queryParams.set('title', filter.title)
         books = books.filter(book => 
-            book.title.toLowerCase().includes(title.toLowerCase()))
+            book.title.toLowerCase().includes(filter.title.toLowerCase()))
     }
+
     if (filter.rating) {
+        queryParams.set('rating', filter.rating)
         books = books.filter(book => book.rating >= filter.rating)
     }
+
+    const newUrl =
+        window.location.protocol + "//" +
+        window.location.host +
+        window.location.pathname + '?' + queryParams.toString()
+
+    window.history.pushState({ path: newUrl }, '', newUrl)
     
     return books
 }
