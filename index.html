@@ -23,6 +23,21 @@
         <button type="submit"> Search </button>
         <button type="reset" onclick="onClearFilter(event)">Clear</button>
     </form>
+
+    <div class="sort">
+        <select name="sort-by" onchange="onSortBy(this)">
+            <option value="">Select Sorting</option>
+            <option value="title">By Title</option>
+            <option value="rating">By Rating</option>
+            <option value="price">By Price</option>
+        </select>
+        <div class="sort-order" onchange="onSortBy(this)">
+            <input type="radio" name="sort-ord" value="dsc">
+            <label for="dsc">Descending</label>
+            <input type="radio" name="sort-ord" value="asc">
+            <label for="asc">Ascending</label>
+        </div>
+    </div>
     
     <table class="book-table">
         <thead>

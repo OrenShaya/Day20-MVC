@@ -92,12 +92,12 @@ function onAddBook() {
     }
     var price = prompt('Enter the new book price:')
     while (!price || (+price) < 0) {
-        price = prompt('Price cannot be blank or negative\nEnter the new book price:')
+        price = +prompt('Price cannot be blank or negative\nEnter the new book price:')
     }
     
     var rating = prompt('Enter the new book rating:')
     while (rating < 1 || rating > 5) {
-        rating = prompt('Rating need to be between 1 to 5\nEnter the new book rating:')
+        rating = +prompt('Rating need to be between 1 to 5\nEnter the new book rating:')
     }
 
     addBook(title, price, rating)
@@ -115,7 +115,34 @@ function onSetFilter(event) {
 
 function onClearFilter(event) {    
     event.preventDefault()
+    
     const elFilterTitle = document.querySelector('.filter-title')
     elFilterTitle.value = ''
+
+    generateURL({title: '', rating: ''})
+
     render()
+}
+
+function onSortBy(sortBy) {
+    var books = getBooks()  
+
+    const elSortBy = document.getElementsByName('sort-by')
+    sortBy = elSortBy[0].value
+
+    const elOrder = document.getElementsByName('sort-ord')
+    // first one is descending - so true = dsc false = asc
+    const sortOrd = (elOrder[0].checked) ? -1 : 1
+    
+    if (sortBy === 'title') { 
+        books = books.toSorted((book1, book2) => book1.title.localeCompare(book2.title) * sortOrd)
+    }
+    if (sortBy === 'rating') books = books.toSorted((book1, book2) => 
+        (+book1.rating - +book2.rating  ) * sortOrd
+    )
+    if (sortBy === 'price')   books = books.toSorted((book1, book2) => 
+        (+book1.price - +book2.price) * sortOrd
+    )
+
+    render(books)    
 }
