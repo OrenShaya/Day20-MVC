@@ -14,6 +14,7 @@ function render(filteredBooks = []) {
         `<tr>
         <td>${book.title}</td>
         <td>${book.price}</td>
+        <td>${starRating(book.rating)}</td>
         <td>
         <button onclick="onReadBook('${book.id}')"> Read   </button> 
         <button onclick="onUpdateBook('${book.id}')"> Update </button> 
@@ -37,11 +38,20 @@ function onReadBook(bookId) {
         Book's ID:    ${book.id}
         Book's title: ${book.title}
         Book's price: ${book.price}
+        Book's rating: ${starRating(book.rating)}
         Book's cover: `
     
     elBookModal.innerHTML += `<img src="${book.imgUrl}" 
     alt="Book cover" width="200" height="300">`
     elBookModal.innerHTML += `</br><button onclick="hideModals()">Hide info</button>`
+}
+
+function starRating(rating) {
+    let stars = ''
+    for (let i = 0; i < rating; i++) {
+        stars += '⭐'
+    }
+    return stars
 }
 
 function onUpdateBook(bookId) {
@@ -64,7 +74,7 @@ function deletedBookMsg(title) {
     const elDeletedModal = document.querySelector('.book-deleted')
     elDeletedModal.style.display = 'block'
 
-    // setTimeout(hideModals, 2000)
+    setTimeout(hideModals, 2000)
 }
 
 function hideModals() {
@@ -84,8 +94,13 @@ function onAddBook() {
     while (!price || (+price) < 0) {
         price = prompt('Price cannot be blank or negative\nEnter the new book price:')
     }
+    
+    var rating = prompt('Enter the new book rating:')
+    while (rating < 1 || rating > 5) {
+        rating = prompt('Rating need to be between 1 to 5\nEnter the new book rating:')
+    }
 
-    addBook(title, price)
+    addBook(title, price, rating)
     render()
 }
 

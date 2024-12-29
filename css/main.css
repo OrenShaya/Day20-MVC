@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(57, 117, 57);
+    background-color: rgb(167, 255, 248);
     color: rgb(22, 22, 204);
     font-family: "Times New Roman", Helvetica, sans-serif;    
 }
@@ -54,7 +54,7 @@ button, input[type="submit"] {
     position: fixed;
     padding: 20vw;
 
-    background-color: rgb(13, 26, 13);
+    background-color: rgb(131, 221, 202);
 }
 .book-modal button {
     position: absolute;

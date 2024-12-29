@@ -7,9 +7,9 @@ function getBooks() {
     var books = loadFromStorage(STORAGE_KEY)
     if (!books || !books.length) {
         books = [
-            addBook('The adventures of Lori Ipsi', 120, 'img/lorem-ipsum.jpg'),
-            addBook('Kratos: The Atlas killer', 150, 'img/kratos.webp'),
-            addBook('Zora: The Lost Hyrule Domain', 90, 'img/zora.webp'),
+            addBook('The adventures of Lori Ipsi', 120, 5, 'img/lorem-ipsum.jpg'),
+            addBook('Kratos: The Atlas killer', 150, 4, 'img/kratos.webp'),
+            addBook('Zora: The Lost Hyrule Domain', 90, 3, 'img/zora.webp'),
         ]
         saveToStorage(STORAGE_KEY, books)
     }
@@ -22,11 +22,12 @@ function getBook(bookId) {
     return books.filter(book => book.id === bookId)[0]
 }
 
-function addBook(title, price, imgUrl='img/default.webp') {
+function addBook(title, price, rating = 3, imgUrl='img/default.webp') {
     var newBook = {   
         id: generateNewBookId(),
         title: title,
         price: price,
+        rating: rating,
         imgUrl: imgUrl
     }
     gBooks.unshift(newBook)
