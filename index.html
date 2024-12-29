@@ -11,8 +11,16 @@
     <h1>My Book Shop</h1>
     
     <form onsubmit="onSetFilter(event)">
-        <input class="filter-title" placeholder="Filter book title">
-        <button type="submit"> Search</button>
+        <input class="filter-title" oninput="onSetFilter(event)" placeholder="Filter book title">
+        <select class="filter-rating" onchange="onSetFilter(event)">
+            <option value="">All</option>
+            <option value="5">⭐⭐⭐⭐⭐</option>
+            <option value="4">⭐⭐⭐⭐</option>
+            <option value="3">⭐⭐⭐</option>
+            <option value="2">⭐⭐</option>
+            <option value="1">⭐</option>
+        </select>
+        <button type="submit"> Search </button>
         <button type="reset" onclick="onClearFilter(event)">Clear</button>
     </form>
     

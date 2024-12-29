@@ -106,8 +106,11 @@ function onAddBook() {
 
 function onSetFilter(event) {
     event.preventDefault()
-    var title = document.querySelector('.filter-title').value
-    render(filterByTitle(title))
+    
+    let title = document.querySelector('.filter-title').value
+    let rating = document.querySelector('.filter-rating').value
+
+    render(filter({title: title, rating: rating}))
 }
 
 function onClearFilter(event) {    

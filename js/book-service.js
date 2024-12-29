@@ -50,9 +50,20 @@ function updateBook(bookId, newPrice) {
     saveToStorage(STORAGE_KEY, gBooks)
 }
 
-function filterByTitle(title) {
-    return gBooks.filter(book => 
-        book.title.toLowerCase().includes(title.toLowerCase()))
+function filter(filter) {
+    var books = gBooks
+    
+    if (!filter.rating && !filter.title) return []
+
+    if (filter.title) {
+        books = books.filter(book => 
+            book.title.toLowerCase().includes(title.toLowerCase()))
+    }
+    if (filter.rating) {
+        books = books.filter(book => book.rating >= filter.rating)
+    }
+    
+    return books
 }
 
 function generateNewBookId() {
